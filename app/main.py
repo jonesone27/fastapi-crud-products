@@ -1,64 +1,11 @@
-import json
-from fastapi import FastAPI
-from pydantic import BaseModel
-from enum import Enum
-from typing import Optional
+from fastapi import FastAPI, HTTPException
 from typing import List
-from decimal import Decimal
-from pydantic import BaseModel, ConfigDict, Field, ValidationError
-from fastapi import HTTPException
-
-
-
-
+# load the relevant classes and methods from the models and storage modules
+from .models import Product, ProductCreate
+from .storage import products, current_id, save_products, load_products
 
 # FastAPI is about defining how your server exposes and enforces a contract over HTTP.
 app = FastAPI()
-
-products = []
-current_id = 1
-
-class Tags(Enum):
-    FRUIT = 'fruit'
-    FRESH = 'fresh'
-    SNACK = 'snack'
-    SWEET = 'sweet'
-    DAIRY = 'dairy'
-    VEGAN = 'vegan'
-    MISC = 'misc'
-
-class Supplier(BaseModel):
-    name: str 
-    contact_email: Optional[str] = None
-
-class Product(BaseModel):
-    id: int = Field(gt=0)
-    name: str = Field(..., max_length=20)
-    price: Decimal = Field(max_digits=5, decimal_places=2)
-    is_offer: bool = False
-    tags: List[Tags] = Field(default_factory=list)
-    supplier: Optional[Supplier] = None
-# Regarding default_factory, see: https://dev.to/devasservice/python-trick-using-dataclasses-with-fielddefaultfactory-4159
-
-# A field is required if and only if:
-    # it has no default value
-    # OR explicitly uses Field(...)
-class ProductCreate(BaseModel):
-    # model_config = ConfigDict(strict=True)    
-    name: str = Field(..., max_length=20)
-    price: Decimal = Field(max_digits=5, decimal_places=2)
-    is_offer: bool = False
-    # default for tags = empty list
-    tags: List[Tags] = Field(default_factory=list)
-    supplier: Optional[Supplier] = None
-
-class ProductUpdate(BaseModel):
-    # model_config = ConfigDict(strict=True)    
-    name: str = Field(..., max_length=20)
-    price: Decimal = Field(max_digits=5, decimal_places=2)
-    is_offer: bool = False
-    tags: List[Tags] = Field(default_factory=list)
-    supplier: Optional[Supplier] = None
 
 # Defining argument data types in Python, see: https://www.geeksforgeeks.org/python/explicitly-define-datatype-in-a-python-function/
 
@@ -68,7 +15,6 @@ def create_product(payload: ProductCreate):
     # Product requires an ID
     new_product = Product(id=current_id, **payload.dict())
     products.append(new_product)
-
     current_id += 1
     # return the following response to client:
     return new_product
@@ -87,8 +33,6 @@ def read_product(id: int):
 def read_all_products():
     return products
 
-
-
 @app.put("/products/{id}", response_model=Product)
 def update_product(id: int, payload: ProductCreate):
     for i, product in enumerate(products):
@@ -103,7 +47,9 @@ def update_product(id: int, payload: ProductCreate):
 def delete_product(id: int):
     for i, product in enumerate(products):
         if product.id == id:
-            return products.pop(i)
+            deleted = products.pop(i)
+            save_products()
+            return deleted
     raise HTTPException(status_code=404, detail="Product not found")
 
 # This is fine, but: lookup = O(n) (linear search); i.e. not scalable
