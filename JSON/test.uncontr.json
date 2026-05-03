@@ -1,0 +1,342 @@
+{
+  "4_AIinMilitaryCyberSecurity_Text_5469": [
+    [
+      "military"
+    ],
+    [
+      "cyber security"
+    ],
+    [
+      "AI"
+    ],
+    [
+      "systematic literature review"
+    ]
+  ],
+  "4_AI_IntrusionDetectionSystem_Text_7342": [
+    [
+      "Cybersecurity"
+    ],
+    [
+      "Artificial Intelligence"
+    ],
+    [
+      "Intrusion Detection Systems"
+    ],
+    [
+      "NIDS"
+    ]
+  ],
+  "4_Digital Tools in Education_Text_6182": [
+    [
+      "digital tools"
+    ],
+    [
+      "entrepreneurship education"
+    ],
+    [
+      "entrepreneurial intention"
+    ],
+    [
+      "development finance"
+    ]
+  ],
+  "4_SentenceGenerationTriplets_Text_1727": [
+    [
+      "sentence generation"
+    ],
+    [
+      "natural language processing"
+    ],
+    [
+      "GPT-2"
+    ],
+    [
+      "large language models"
+    ]
+  ],
+  "5_Blockchain for Security_Text_7898": [
+    [
+      "blockchain technology"
+    ],
+    [
+      "vehicle classification"
+    ],
+    [
+      "data security"
+    ],
+    [
+      "transparency"
+    ],
+    [
+      "decentralization"
+    ]
+  ],
+  "5_ChatGPT_SentimentAnalysis_Text_5770": [
+    [
+      "Natural Language Processing"
+    ],
+    [
+      "TextBlob"
+    ],
+    [
+      "nltk"
+    ],
+    [
+      "LinearSVC algorithm"
+    ],
+    [
+      "Tfidf Vectorizer"
+    ]
+  ],
+  "5_ProgressiveML_Text_6128": [
+    [
+      "Cloud Data Security"
+    ],
+    [
+      "log files"
+    ],
+    [
+      "machine learning (ML) techniques"
+    ],
+    [
+      "intrusion detection"
+    ],
+    [
+      "financial cloud"
+    ]
+  ],
+  "6_Cybersecurity_CPS_Text_5688": [
+    [
+      "CPS"
+    ],
+    [
+      "CPS security"
+    ],
+    [
+      "robotic CPS"
+    ],
+    [
+      "vulnerabilities"
+    ],
+    [
+      "attacks"
+    ],
+    [
+      "security threats"
+    ]
+  ],
+  "6_Security in MQTT_Text_6762": [
+    [
+      "Internet of Things"
+    ],
+    [
+      "Message Queuing Telemetry Transport"
+    ],
+    [
+      "resource-constrained devices"
+    ],
+    [
+      "security"
+    ],
+    [
+      "Pseudo-Random Number Generator"
+    ],
+    [
+      "security"
+    ]
+  ],
+  "6_SoBERT_Text_2673": [
+    [
+      "automatic speech recognition"
+    ],
+    [
+      "transformer"
+    ],
+    [
+      "Whisper"
+    ],
+    [
+      "Soundex"
+    ],
+    [
+      "probabilistic language model"
+    ],
+    [
+      "deep learning"
+    ]
+  ],
+   "4_Cloud storage optimization_Text_9335": [
+    [
+      "storage tiers"
+    ],
+    [
+      "storage cost"
+    ],
+    [
+      "cloud computing"
+    ],
+    [
+      "cloud storage"
+    ]
+  ],
+  "4_Hybrid online learning_Text_4830": [
+    [
+      "predictive maintenance"
+    ],
+    [
+      "Industry 4.0"
+    ],
+    [
+      "LSTM"
+    ],
+    [
+      "IoT"
+    ]
+  ],
+  "5_Secure and scalable IoT_Text_9373": [
+    [
+      "HRS"
+    ],
+    [
+      "security"
+    ],
+    [
+      "Hyperledger Fabric"
+    ],
+    [
+      "Caliper"
+    ],
+    [
+      "scalability"
+    ]
+  ],
+  "5_Exploring microservice ownership_Text_9654": [
+    [
+      "microservice"
+    ],
+    [
+      "team"
+    ],
+    [
+      "coupling"
+    ],
+    [
+      "cross-service contribution"
+    ],
+    [
+      "microservice ownership"
+    ]
+  ],
+  "5_LLM_privacy policy_Text_1558": [
+    [
+      "large language models"
+    ],
+    [
+      "natural language processing"
+    ],
+    [
+      "privacy policies"
+    ],
+    [
+      "data protection"
+    ],
+    [
+      "privacy"
+    ]
+  ],
+  "5_Smart data flow_Text_7140": [
+    [
+      "cloud computing"
+    ],
+    [
+      "edge device"
+    ],
+    [
+      "fog computing"
+    ],
+    [
+      "hashshatter fragmentation"
+    ],
+    [
+      "resource aware fragmentation"
+    ]
+  ],
+  "5_TinyML strategies_Text_8708": [
+    [
+      "edge computing"
+    ],
+    [
+      "edge intelligence"
+    ],
+    [
+      "IoT"
+    ],
+    [
+      "privacy"
+    ],
+    [
+      "Tiny Machine Learning"
+    ]
+  ],
+  "6_Empowering cloud providers_Text_1192": [
+    [
+      "cloud computing"
+    ],
+    [
+      "energy consumption"
+    ],
+    [
+      "locust-inspired algorithm"
+    ],
+    [
+      "server consolidation"
+    ],
+    [
+      "sla violation"
+    ],
+    [
+      "VM migrations"
+    ]
+  ],
+  "6_Innovative approaches_IoT_Text_7454": [
+    [
+      "Internet of Things"
+    ],
+    [
+      "Improved Differential Evolution Algorithm"
+    ],
+    [
+      "Concurrent Federated Reinforcement Learning"
+    ],
+    [
+      "DRL-LOWOA"
+    ],
+    [
+      "Deep Neutral Network"
+    ],
+    [
+      "MDP"
+    ]
+  ],
+  "6_Personality_social engineering_Text_5864": [
+    [
+      "social engineering"
+    ],
+    [
+      "human factors"
+    ],
+    [
+      "personality traits"
+    ],
+    [
+      "persuasion"
+    ],
+    [
+      "cybersecurity training"
+    ],
+    [
+      "vignette"
+    ]
+  ]
+}

@@ -1,0 +1,172 @@
+{
+  "Communication and Collaboration Systems_Text_2112_x": [
+    [
+      "novel technological advances"
+    ],
+    [
+      "organisational and inter-organisational systems"
+    ],
+    [
+      "technologies"
+    ],
+    [
+      "challenges"
+    ],
+    [
+      "knowledge creation/sharing"
+    ]
+  ],
+  "Computer Structures and Operating Systems_Text_2063_x": [
+    [
+      "hardware and software interactions"
+    ],
+    [
+      "computer hardware"
+    ],
+    [
+      "von Neumann"
+    ],
+    [
+      "mathematical foundations"
+    ],
+    [
+      "functionality"
+    ]
+  ],
+  "Data Management Text_5410_x": [
+    [
+      "conceptual design"
+    ],
+    [
+      "data-processing design"
+    ],
+    [
+      "Structured Query Language"
+    ],
+    [
+      "entity-relationship model"
+    ],
+    [
+      "relational data model"
+    ]
+  ],
+  "Data Structures and Algorithms_Text_7102_x": [
+    [
+      "NP-complete problems"
+    ],
+    [
+      "efficiency"
+    ],
+    [
+      "analysis and evaluation"
+    ],
+    [
+      "memory"
+    ],
+    [
+      "elementary layout variants"
+    ]
+  ],
+  "Economics for IS_Text_1624_x": [
+    [
+      "basic concepts"
+    ],
+    [
+      "macroeconomic"
+    ],
+    [
+      "microeconomic"
+    ],
+    [
+      "ethical foundations"
+    ],
+    [
+      "normative foundations"
+    ]
+  ],
+  "IT-Law_Text_7283_x": [
+    [
+      "distance selling law"
+    ],
+    [
+      "IT contract law"
+    ],
+    [
+      "data protection law"
+    ],
+    [
+      "copyright law"
+    ],
+    [
+      "trademark law"
+    ]
+  ],
+  "Mathematics for IS_Text_5567_x": [
+    [
+      "differential calculus"
+    ],
+    [
+      "integral calculus"
+    ],
+    [
+      "linear equations"
+    ],
+    [
+      "vectors"
+    ],
+    [
+      "matrices"
+    ]
+  ],
+  "Process Management_Text_1501_x": [
+    [
+      "information modeling"
+    ],
+    [
+      "application systems"
+    ],
+    [
+      "ERP systems"
+    ],
+    [
+      "enterprises"
+    ],
+    [
+      "public administrations"
+    ]
+  ],
+  "Programming_Text_4892_x": [
+    [
+      "programming languages"
+    ],
+    [
+      "operational semantics"
+    ],
+    [
+      "object oriented programming"
+    ],
+    [
+      "declarative programming"
+    ],
+    [
+      "programming techniques"
+    ]
+  ],
+  "Project Management_Text_8631_x": [
+    [
+      "project life cycle"
+    ],
+    [
+      "project quality management"
+    ],
+    [
+      "Magic Triangle"
+    ],
+    [
+      "project resource management"
+    ],
+    [
+      "real-world project management scenarios"
+    ]
+  ]
+}
