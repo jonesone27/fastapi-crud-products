@@ -27,9 +27,12 @@ def load_products():
     try:
         with open("data/products.json", "r") as f:
             data = json.load(f)
-            products = [Product(**item) for item in data]
-            current_id = max([p.id for p in products], default=0) + 1
+            # add to products dict using "id" from Json as id
+            products = {item["id"]: Product(**item) for item in data}
+            current_id = max(products.keys(), default=0) + 1
             # The max() function returns the item with the highest value, or the item with the highest value in an iterable.
     except FileNotFoundError:
-        products = []
+        print("File not found")
+        products = {}
         current_id = 1
+        

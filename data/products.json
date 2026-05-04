@@ -11,18 +11,5 @@
       "name": "Fresh&Fruity",
       "contact_email": "Fresh&Fruity@info.com"
     }
-  },
-  {
-    "id": 2,
-    "name": "Hafermilch",
-    "price": 2.5,
-    "is_offer": true,
-    "tags": [
-      "vegan"
-    ],
-    "supplier": {
-      "name": "BetterDairy",
-      "contact_email": "betterdairy@info.com"
-    }
   }
 ]
