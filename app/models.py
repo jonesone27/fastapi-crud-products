@@ -14,7 +14,7 @@ from fastapi import HTTPException
 # FastAPI is about defining how your server exposes and enforces a contract over HTTP.
 app = FastAPI()
 
-products = []
+products = {}
 current_id = 1
 
 class Tags(Enum):

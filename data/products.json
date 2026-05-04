@@ -1,52 +1,28 @@
 [
   {
     "id": 1,
-    "name": "Apple",
-    "price": 1.2,
+    "name": "Ananas",
+    "price": 3.75,
     "is_offer": false,
-    "tags": ["fruit", "fresh"],
+    "tags": [
+      "fruit"
+    ],
     "supplier": {
-      "name": "Fresh Farms Ltd.",
-      "contact_email": "contact@freshfarms.com"
+      "name": "Fresh&Fruity",
+      "contact_email": "Fresh&Fruity@info.com"
     }
   },
   {
     "id": 2,
-    "name": "Banana",
-    "price": 0.8,
+    "name": "Hafermilch",
+    "price": 2.5,
     "is_offer": true,
-    "tags": ["fruit"],
+    "tags": [
+      "vegan"
+    ],
     "supplier": {
-      "name": "Tropical Goods Inc.",
-      "contact_email": "sales@tropicalgoods.com"
+      "name": "BetterDairy",
+      "contact_email": "betterdairy@info.com"
     }
-  },
-  {
-    "id": 3,
-    "name": "Chocolate Bar",
-    "price": "2.5",
-    "is_offer": false,
-    "tags": ["snack", "sweet"],
-    "supplier": {
-      "name": "Sweet Factory",
-      "contact_email": "info@sweetfactory.com"
-    }
-  },
-  {
-    "id": 4,
-    "name": "Milk",
-    "price": 1.5,
-    "tags": ["dairy"],
-    "supplier": {
-      "name": "Dairy Best"
-    }
-  },
-  {
-    "id": 5,
-    "name": "Eggs",
-    "price": 2.2,
-    "is_offer": true,
-    "tags": [],
-    "supplier": null
   }
 ]
