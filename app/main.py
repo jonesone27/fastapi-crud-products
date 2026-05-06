@@ -4,13 +4,14 @@ from typing import List
 from .models import Product, ProductCreate
 from .storage import products, current_id, save_products, load_products
 from contextlib import asynccontextmanager
+from decimal import Decimal
 
-
+# Lifespan, see https://fastapi.tiangolo.com/advanced/events/#async-context-manager
 # FastAPI is about defining how your server exposes and enforces a contract over HTTP.
 async def lifespan(app: FastAPI):
     load_products()
     yield
-    
+
 app = FastAPI()
 
 # Defining argument data types in Python, see: https://www.geeksforgeeks.org/python/explicitly-define-datatype-in-a-python-function/
@@ -42,15 +43,41 @@ def read_product(id: int):
     # return the following response to client:
     return product
     
+# See https://fastapi.tiangolo.com/#example-upgrade
+# See also https://fastapi.tiangolo.com/tutorial/query-params/?h=query
+# @app.get("/products", response_model=List[Product])
+# def read_min_price(q: float | None = None):
+    
+#     # min_products = []
+#     # for product in products:
+#     #     if q and q >=2.5:            
+#     #         min_products.append(product) 
+#     if product is None:
+#         raise HTTPException(status_code=404, detail="Product not found")
+#     # return the following response to client:
+#     return min_products
 
-@app.get("/products", response_model=List[Product])
-def read_all_products():
-    return list(products.values()) 
-
-# @app.get("/products", response_model=dict[int, Product])
+# @app.get("/products", response_model=List[Product])
 # def read_all_products():
-#     return products
+#     for keys, values in products.items():
+#         print(keys, values)
+#     return list(products.values()) 
 
+@app.get("/products", response_model=dict[int, Product])
+def read_all_products(min_price: Decimal | None = None):
+    
+    if min_price is None:
+        return products
+    
+    
+    filtered_products = {}
+
+    for key, product in products.items():
+        if product.price >= min_price:
+            filtered_products[key] = product            
+    return filtered_products
+
+    
 
 # using a products dict
 @app.put("/products/{id}", response_model=Product)
