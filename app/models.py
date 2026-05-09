@@ -28,15 +28,17 @@ class Tags(Enum):
 
 class Supplier(BaseModel):
     name: str 
-    contact_email: Optional[str] = None
+    contact_email: str | None
 
+# Field(default_factory=list), i.e. create an empty list if no value is provided,
+# Fields enable validation inside Pydantic models, see also https://fastapi.tiangolo.com/tutorial/body-fields/?h=field
 class Product(BaseModel):
     id: int = Field(gt=0)
     name: str = Field(..., max_length=20)
     price: Decimal = Field(max_digits=5, decimal_places=2)
     is_offer: bool = False
     tags: List[Tags] = Field(default_factory=list)
-    supplier: Optional[Supplier] = None
+    supplier: Supplier | None 
 # Regarding default_factory, see: https://dev.to/devasservice/python-trick-using-dataclasses-with-fielddefaultfactory-4159
 
 # A field is required if and only if:
@@ -49,12 +51,21 @@ class ProductCreate(BaseModel):
     is_offer: bool = False
     # default for tags = empty list
     tags: List[Tags] = Field(default_factory=list)
-    supplier: Optional[Supplier] = None
+    supplier: Supplier | None = Field(default=None)
 
-class ProductUpdate(BaseModel):
-    # model_config = ConfigDict(strict=True)    
-    name: str = Field(..., max_length=20)
-    price: Decimal = Field(max_digits=5, decimal_places=2)
-    is_offer: bool = False
-    tags: List[Tags] = Field(default_factory=list)
-    supplier: Optional[Supplier] = None
+
+class ProductPatch(BaseModel):
+    name: str | None = Field(max_length=20, default=None) 
+    price: Decimal | None = Field(max_digits=5, decimal_places=2, default=None) 
+    is_offer: bool | None  = Field(default=None)
+    tags: List[Tags] | None = Field(default=None)
+    supplier: Supplier | None = Field(default=None)
+
+# class ProductUpdate(BaseModel):
+#     # model_config = ConfigDict(strict=True)    
+#     name: str = Field(..., max_length=20)
+#     price: Decimal = Field(max_digits=5, decimal_places=2)
+#     is_offer: bool = False
+#     tags: List[Tags] = Field(default_factory=list)
+#     supplier: Optional[Supplier] = None
+

@@ -1,11 +1,12 @@
 from fastapi import FastAPI, HTTPException
 from typing import List
 # load the relevant classes and methods from the models and storage modules
-from .models import Product, ProductCreate
+from .models import Product, ProductCreate, ProductPatch
 # load the storage file as an object from all files to prevent Python from loading the empty products dict from any files but only from storage.py (as object)
 from . import storage
 from contextlib import asynccontextmanager
 from decimal import Decimal
+
 
 # Lifespan, see https://fastapi.tiangolo.com/advanced/events/#async-context-manager
 # FastAPI is about defining how your server exposes and enforces a contract over HTTP.
@@ -71,40 +72,71 @@ def update_product(id: int, payload: ProductCreate):
     return updated_product
 
 
+# Regarding model_dump(), see https://pydantic.dev/docs/validation/latest/api/pydantic/base_model/#pydantic.BaseModel.model_dump
 # loop through values; if values of new =! old values -> replace, return product
 @app.patch("/products/{id}", response_model=Product)
-def update_product_fields(id: int, payload: ProductCreate):
+def update_product_fields(id: int, payload: ProductPatch):
+
     if id not in storage.products:
         raise HTTPException(status_code=404, detail="Product not found")
     current_product = storage.products[id]
-    updated_product = Product(id=id, **payload.dict())
+    updated_product = payload.model_dump(exclude_unset=True)
+
     
-    try:
-                          
-        if (current_product.name != updated_product.name) and (updated_product.name != "string"):
-            current_product.name = updated_product.name
-        else: print(f"Entered mandatory value for 'name' is identical or not valid!")
-        if (current_product.price != updated_product.price) and (updated_product.price >= 0):
-            current_product.price = updated_product.price
-        else: print(f"Entered mandatory value for 'price' is identical or not valid!")
-        if current_product.is_offer != updated_product.is_offer:
-            current_product.price = updated_product.price        
-        if (current_product.tags != []) and (current_product.tags != updated_product.tags):
-            current_product.tags.clear
-            current_product.tags.extend(updated_product.tags)
-        if (updated_product.supplier.name is not None and updated_product.supplier.name != "string") and (current_product.supplier.name != updated_product.supplier.name):
-            current_product.supplier.name = updated_product.supplier.name
-        else: print(f"Entered value for 'supplier name' is identical or not valid!")
-        if (updated_product.supplier.contact_email is not None and updated_product.supplier.contact_email !="string") and (current_product.supplier.contact_email != updated_product.supplier.contact_email):
-            current_product.supplier.contact_email = updated_product.supplier.contact_email
-        else: print(f"Entered value for 'supplier e-mail address' is identical or not valid!")
-        # storage.save_products()
-        # # return storage.products[key]
-        return current_product
-    except ValueError:
-        print("Data entry failed.")
+    for field, value in updated_product.items():
+        if value is not None:
+            setattr(current_product, field, value)
+    storage.save_products()
+    return current_product 
+    
+    # try:
+    #     for field, name in updated_product.items():
+                        
+    #         if (current_product.name != updated_product["name"] and (updated_product["name"] != "string"):
+    #             current_product.name = updated_product["name"]
+    #         else: print(f"Entered mandatory value for 'name' is identical or not valid!")
+    #         if (current_product.price != updated_product["price"] and (updated_product["price"] >= 0):
+    #             current_product.price = updated_product["price"]
+    #         else: print(f"Entered mandatory value for 'price' is identical or not valid!")
+    #         if current_product.is_offer != updated_product["is_offer"]:
+    #             current_product.price = updated_product["price"]        
+    #         if (current_product.tags != []) and (current_product.tags != updated_product["tags"]:
+    #             current_product.tags.clear
+    #             current_product.tags.extend(updated_product["tags"]
+    #         if (updated_product["supplier"]["name"]) is not None and updated_product["supplier"]["name"]) != "string") and (current_product.supplier.name != updated_product["supplier"]["name"])):
+    #             current_product.supplier.name = updated_product["supplier"]["name"])
+    #         else: print(f"Entered value for 'supplier name' is identical or not valid!")
+    #         if (updated_product["supplier"]["contact_email"]) is not None and updated_product["supplier"]["contact_email"]) !="string") and (current_product.supplier.contact_email != updated_product["supplier"]["contact_email"])):
+    #             current_product.supplier.contact_email = updated_product["supplier"]["contact_email"])
+    #         else: print(f"Entered value for 'supplier e-mail address' is identical or not valid!")
+    #         storage.save_products()
+    #     # return storage.products[key]
+    #     return current_product               
 
-
+# DOES THIS WORK???
+# See: https://realpython.com/ref/builtin-functions/setattr/
+                if field == "price":
+                    setattr(current_product, field, value)
+             and value != "string":
+                current_product.name = value
+            else: print(f"Entered mandatory value for 'name' is identical or not valid!")
+            if (current_product.price != updated_product["price"] and (updated_product["price"] >= 0):
+                current_product.price = updated_product["price"]
+            else: print(f"Entered mandatory value for 'price' is identical or not valid!")
+            if current_product.is_offer != updated_product["is_offer"]:
+                current_product.price = updated_product["price"]        
+            if (current_product.tags != []) and (current_product.tags != updated_product["tags"]:
+                current_product.tags.clear
+                current_product.tags.extend(updated_product["tags"]
+            if (updated_product["supplier"]["name"]) is not None and updated_product["supplier"]["name"]) != "string") and (current_product.supplier.name != updated_product["supplier"]["name"])):
+                current_product.supplier.name = updated_product["supplier"]["name"])
+            else: print(f"Entered value for 'supplier name' is identical or not valid!")
+            if (updated_product["supplier"]["contact_email"]) is not None and updated_product["supplier"]["contact_email"]) !="string") and (current_product.supplier.contact_email != updated_product["supplier"]["contact_email"])):
+                current_product.supplier.contact_email = updated_product["supplier"]["contact_email"])
+            else: print(f"Entered value for 'supplier e-mail address' is identical or not valid!")
+            storage.save_products()
+        # return storage.products[key]
+        
 
 # using a products dict
 @app.delete("/products/{id}", response_model=Product)
