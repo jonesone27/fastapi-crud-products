@@ -1,28 +1,556 @@
 [
 {
- "id": 1,
- "name": "Ananas",
-  "price": 3.75,
-  "is_offer": false,
-  "tags": [
-    "fruit"
-  ],
-  "supplier": {
-    "name": "Fresh&Fruity",
-    "contact_email": "Fresh&Fruity@info.com"
-  }
+"id": 1,
+"name": "Ananas",
+"price": 3.75,
+"is_offer": false,
+"tags": [
+"fruit"
+],
+"supplier": {
+"name": "Fresh&Fruity",
+"contact_email": "Fresh&Fruity@info.com"
+}
 },
 {
-  "id": 2,
-  "name": "Hafermilch",
-  "price": 2.5,
-  "is_offer": true,
-  "tags": [
-    "vegan"
-  ],
-  "supplier": {
-    "name": "BetterDairy",
-    "contact_email": "betterdairy@info.com"
-  }
+"id": 2,
+"name": "Hafermilch",
+"price": 2.5,
+"is_offer": true,
+"tags": [
+"vegan"
+],
+"supplier": {
+"name": "BetterDairy",
+"contact_email": "betterdairy@info.com"
+}
+},
+{
+"id": 3,
+"name": "Bananen",
+"price": 1.2,
+"is_offer": false,
+"tags": [
+"fruit"
+],
+"supplier": {
+"name": "TropicalSupplies",
+"contact_email": "sales@tropicals.com"
+}
+},
+{
+"id": 4,
+"name": "Vollkornbrot",
+"price": 2.85,
+"is_offer": true,
+"tags": [
+"bakery",
+"wholegrain"
+],
+"supplier": {
+"name": "Baker'sRow",
+"contact_email": "orders@bakersrow.com"
+}
+},
+{
+"id": 5,
+"name": "Bio-Eier (10)",
+"price": 3.95,
+"is_offer": false,
+"tags": [
+"eggs",
+"organic"
+],
+"supplier": {
+"name": "GreenFarm",
+"contact_email": "contact@greenfarm.org"
+}
+},
+{
+"id": 6,
+"name": "Gouda Käse (200g)",
+"price": 2.99,
+"is_offer": false,
+"tags": [
+"dairy",
+"cheese"
+],
+"supplier": {
+"name": "DutchDairy",
+"contact_email": "info@dutchdairy.com"
+}
+},
+{
+"id": 7,
+"name": "Tomaten (500g)",
+"price": 1.75,
+"is_offer": true,
+"tags": [
+"vegetable"
+],
+"supplier": {
+"name": "LocalGreens",
+"contact_email": "hello@localgreens.net"
+}
+},
+{
+"id": 8,
+"name": "Olivenöl Extra Vergine (500ml)",
+"price": 6.5,
+"is_offer": false,
+"tags": [
+"pantry",
+"oil"
+],
+"supplier": {
+"name": "Mediterranea",
+"contact_email": "orders@mediterranea.co"
+}
+},
+{
+"id": 9,
+"name": "Spaghetti (500g)",
+"price": 1.1,
+"is_offer": true,
+"tags": [
+"pasta",
+"pantry"
+],
+"supplier": {
+"name": "PastaWorks",
+"contact_email": "sales@pastaworks.com"
+}
+},
+{
+"id": 10,
+"name": "Apfelsaft (1L)",
+"price": 2.2,
+"is_offer": false,
+"tags": [
+"beverage",
+"juice"
+],
+"supplier": {
+"name": "OrchardPress",
+"contact_email": "support@orchardpress.com"
+}
+},
+{
+"id": 11,
+"name": "Griechischer Joghurt (500g)",
+"price": 2.45,
+"is_offer": false,
+"tags": [
+"dairy",
+"yogurt"
+],
+"supplier": {
+"name": "AegeanDairy",
+"contact_email": "contact@aegeandairy.gr"
+}
+},
+{
+"id": 12,
+"name": "Mandelmus (250g)",
+"price": 5.25,
+"is_offer": true,
+"tags": [
+"spread",
+"vegan",
+"nut"
+],
+"supplier": {
+"name": "NuttyCo",
+"contact_email": "info@nuttyco.com"
+}
+},
+{
+"id": 13,
+"name": "Karotten (1kg)",
+"price": 1.6,
+"is_offer": false,
+"tags": [
+"vegetable"
+],
+"supplier": {
+"name": "RootHarvest",
+"contact_email": "sales@rootharvest.com"
+}
+},
+{
+"id": 14,
+"name": "Rinderhack (500g)",
+"price": 4.9,
+"is_offer": true,
+"tags": [
+"meat",
+"fresh"
+],
+"supplier": {
+"name": "PrimeMeats",
+"contact_email": "orders@primemeats.co"
+}
+},
+{
+"id": 15,
+"name": "Linsen (500g)",
+"price": 2.1,
+"is_offer": false,
+"tags": [
+"pantry",
+"legumes",
+"vegan"
+],
+"supplier": {
+"name": "PulseProvisions",
+"contact_email": "info@pulseprovisions.com"
+}
+},
+{
+"id": 16,
+"name": "Schwarzer Kaffee Bohnen (250g)",
+"price": 3.6,
+"is_offer": false,
+"tags": [
+"beverage",
+"coffee"
+],
+"supplier": {
+"name": "RoastHouse",
+"contact_email": "contact@roasthouse.coffee"
+}
+},
+{
+"id": 17,
+"name": "Haferflocken (1kg)",
+"price": 2.3,
+"is_offer": true,
+"tags": [
+"breakfast",
+"wholegrain",
+"vegan"
+],
+"supplier": {
+"name": "GrainGuild",
+"contact_email": "orders@grainguild.com"
+}
+},
+{
+"id": 18,
+"name": "Mozzarella (125g)",
+"price": 1.45,
+"is_offer": false,
+"tags": [
+"dairy",
+"cheese"
+],
+"supplier": {
+"name": "BellaCase",
+"contact_email": "sales@bellacase.it"
+}
+},
+{
+"id": 19,
+"name": "Kartoffeln (2kg)",
+"price": 3.2,
+"is_offer": false,
+"tags": [
+"vegetable",
+"starch"
+],
+"supplier": {
+"name": "EarthYield",
+"contact_email": "hello@earthyield.com"
+}
+},
+{
+"id": 20,
+"name": "Zitronen (kg)",
+"price": 2.9,
+"is_offer": true,
+"tags": [
+"fruit",
+"citrus"
+],
+"supplier": {
+"name": "CitrusCorner",
+"contact_email": "contact@citruscorner.co"
+}
+},
+{
+"id": 21,
+"name": "Tofu Natur (400g)",
+"price": 2.0,
+"is_offer": false,
+"tags": [
+"vegan",
+"protein"
+],
+"supplier": {
+"name": "SoyWorks",
+"contact_email": "info@soyworks.com"
+}
+},
+{
+"id": 22,
+"name": "Honig (250g)",
+"price": 4.1,
+"is_offer": false,
+"tags": [
+"spread",
+"sweetener"
+],
+"supplier": {
+"name": "BeeKind",
+"contact_email": "orders@beekind.org"
+}
+},
+{
+"id": 23,
+"name": "Erdnussbutter Crunchy (350g)",
+"price": 3.15,
+"is_offer": true,
+"tags": [
+"spread",
+"nut"
+],
+"supplier": {
+"name": "SpreadGood",
+"contact_email": "support@spreadgood.com"
+}
+},
+{
+"id": 24,
+"name": "Blattsalat Mix (200g)",
+"price": 1.9,
+"is_offer": false,
+"tags": [
+"vegetable",
+"salad"
+],
+"supplier": {
+"name": "LeafyFields",
+"contact_email": "sales@leafyfields.co"
+}
+},
+{
+"id": 25,
+"name": "Lachsfilet (200g)",
+"price": 6.75,
+"is_offer": false,
+"tags": [
+"fish",
+"fresh"
+],
+"supplier": {
+"name": "NordicCatch",
+"contact_email": "orders@nordiccatch.se"
+}
+},
+{
+"id": 26,
+"name": "Tee Grüner (20 Beutel)",
+"price": 2.4,
+"is_offer": true,
+"tags": [
+"beverage",
+"tea"
+],
+"supplier": {
+"name": "LeafBrew",
+"contact_email": "info@leafbrew.com"
+}
+},
+{
+"id": 27,
+"name": "Schokolade Zartbitter (100g)",
+"price": 1.9,
+"is_offer": false,
+"tags": [
+"snack",
+"sweet"
+],
+"supplier": {
+"name": "CocoaCraft",
+"contact_email": "contact@cocoacraft.com"
+}
+},
+{
+"id": 28,
+"name": "Petersilie Bund",
+"price": 0.85,
+"is_offer": false,
+"tags": [
+"herb"
+],
+"supplier": {
+"name": "HerbGarden",
+"contact_email": "herbs@herbgarden.net"
+}
+},
+{
+"id": 29,
+"name": "Butter (250g)",
+"price": 2.2,
+"is_offer": true,
+"tags": [
+"dairy"
+],
+"supplier": {
+"name": "CulturedCream",
+"contact_email": "orders@culturedcream.com"
+}
+},
+{
+"id": 30,
+"name": "Reis Jasmin (1kg)",
+"price": 3.0,
+"is_offer": false,
+"tags": [
+"pantry",
+"grain"
+],
+"supplier": {
+"name": "RiceRoots",
+"contact_email": "sales@riceroots.com"
+}
+},
+{
+"id": 31,
+"name": "Mango (Stück)",
+"price": 1.75,
+"is_offer": true,
+"tags": [
+"fruit",
+"tropical"
+],
+"supplier": {
+"name": "SunnyOrchards",
+"contact_email": "info@sunnyorchards.com"
+}
+},
+{
+"id": 32,
+"name": "Kichererbsen Dose (400g)",
+"price": 0.95,
+"is_offer": false,
+"tags": [
+"pantry",
+"legumes"
+],
+"supplier": {
+"name": "CannedBasics",
+"contact_email": "support@cannedbasics.com"
+}
+},
+{
+"id": 33,
+"name": "Kokosmilch (400ml)",
+"price": 1.6,
+"is_offer": false,
+"tags": [
+"pantry",
+"vegan"
+],
+"supplier": {
+"name": "TropicalCans",
+"contact_email": "sales@tropicalcans.com"
+}
+},
+{
+"id": 34,
+"name": "Honig Senf Dressing (250ml)",
+"price": 2.3,
+"is_offer": true,
+"tags": [
+"condiment"
+],
+"supplier": {
+"name": "DressingDelight",
+"contact_email": "orders@dressingdelight.com"
+}
+},
+{
+"id": 35,
+"name": "Gurke (Stück)",
+"price": 0.9,
+"is_offer": false,
+"tags": [
+"vegetable"
+],
+"supplier": {
+"name": "GreenRows",
+"contact_email": "hello@greenrows.com"
+}
+},
+{
+"id": 36,
+"name": "Gefrorene Erbsen (500g)",
+"price": 1.5,
+"is_offer": false,
+"tags": [
+"frozen",
+"vegetable"
+],
+"supplier": {
+"name": "FrostedFresh",
+"contact_email": "support@frostedfresh.com"
+}
+},
+{
+"id": 37,
+"name": "Spargel Weiß (250g)",
+"price": 4.25,
+"is_offer": true,
+"tags": [
+"vegetable",
+"seasonal"
+],
+"supplier": {
+"name": "AsparaCo",
+"contact_email": "sales@asparaco.com"
+}
+},
+{
+"id": 38,
+"name": "Müsli Frucht (500g)",
+"price": 3.45,
+"is_offer": false,
+"tags": [
+"breakfast",
+"snack"
+],
+"supplier": {
+"name": "CrunchyMorning",
+"contact_email": "info@crunchymorning.com"
+}
+},
+{
+"id": 39,
+"name": "Mineralwasser Medium (1.5L)",
+"price": 0.75,
+"is_offer": true,
+"tags": [
+"beverage",
+"water"
+],
+"supplier": {
+"name": "PureSprings",
+"contact_email": "contact@puresprings.net"
+}
+},
+{
+"id": 40,
+"name": "Paprika Rot (Stück)",
+"price": 1.1,
+"is_offer": false,
+"tags": [
+"vegetable",
+"capsicum"
+],
+"supplier": {
+"name": "ColorVeg",
+"contact_email": "sales@colorveg.com"
+}
 }
 ]

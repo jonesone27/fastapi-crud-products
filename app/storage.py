@@ -32,7 +32,6 @@ def load_products():
         os.makedirs("data", exist_ok=True)
         with open("data/products.json", "r") as f:
             data = json.load(f)
-            print(f"data is: {data}")
             # add to products dict using "id" from Json as id (Python actually creates an entirely new dict)
             products = {item["id"]: Product(**item) for item in data}
             current_id = max(products.keys(), default=0) + 1

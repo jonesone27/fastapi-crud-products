@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.encoders import jsonable_encoder
 from typing import List
 # load the relevant classes and methods from the models and storage modules
 from .models import Product, ProductCreate, ProductPatch
@@ -37,6 +38,69 @@ def create_product(payload: ProductCreate):
 def root():
     return {"message": "API is running"}
 
+# @app.get("/products", response_model=dict[int, Product])
+@app.get("/products", response_model=list[Product])
+def read_all_products(min_price: Decimal | None = None, sorting_asc: bool | None=None, limit:int | None = None, offset:int | None=None):
+    
+    if (limit is not None and offset is not None):
+        product_list = list(storage.products.values())
+        filtered_list = product_list[offset:offset+limit]
+        print(filtered_list)
+        return filtered_list
+
+
+# nur den Preis der Listen-Items ausgeben und dann mit min-price vergleichen!
+    if (min_price is None and sorting_asc is None):
+        prod_list = list(storage.products.values())
+        print(prod_list)
+        return prod_list
+
+    if (min_price is not None and sorting_asc is None):
+        prod_list = list(storage.products.values())
+        min_list = []
+        for product in prod_list:
+            if product.price >= min_price:
+                min_list.append(product)
+        # for i in prod_list:
+        #     print(prod_list[i])
+        print(min_list)   
+        return min_list
+    
+
+    if (min_price is None and sorting_asc is True):            
+            sorted_products = sorted(storage.products.values(), key=lambda products: products.price)            
+            print(sorted_products)            
+            return sorted_products
+
+#   if (min_price is None and sorting_asc is True):
+#         sorted_products = sorted(storage.products.items(), key=lambda items: items[1].price)
+#         print(jsonable_encoder(dict(sorted_products)))
+#         return sorted_products
+
+
+    #     filtered_products = {}
+
+    #     for i in storage.products.values():
+    #         if product.price >= min_price:
+    #             filtered_products[key] = product
+    #             print(product)            
+    #     return list(filtered_products)
+
+
+    # if (min_price is not None and sorting_asc is None):
+    #     filtered_products = {}
+
+    #     for key, product in storage.products.items():
+    #         if product.price >= min_price:
+    #             filtered_products[key] = product
+    #             print(product)            
+    #     return list(filtered_products)
+# # Dict dorting works internally, but JSON object viewers may reorder dictionary keys because dictionaries (unlike lists) are not ideal ordered transport structures.
+#   
+
+
+
+
 @app.get("/products/{id}", response_model=Product)
 def read_product(id: int):
     product = storage.products.get(id)
@@ -45,18 +109,6 @@ def read_product(id: int):
     # return the following response to client:
     return product
     
-@app.get("/products", response_model=dict[int, Product])
-def read_all_products(min_price: Decimal | None = None):
-    
-    if min_price is None:
-        return storage.products
-        
-    filtered_products = {}
-
-    for key, product in storage.products.items():
-        if product.price >= min_price:
-            filtered_products[key] = product            
-    return filtered_products
 
     
 
@@ -88,64 +140,15 @@ def update_product_fields(id: int, payload: ProductPatch):
             setattr(current_product, field, value)
     storage.save_products()
     return current_product 
-    
-    # try:
-    #     for field, name in updated_product.items():
-                        
-    #         if (current_product.name != updated_product["name"] and (updated_product["name"] != "string"):
-    #             current_product.name = updated_product["name"]
-    #         else: print(f"Entered mandatory value for 'name' is identical or not valid!")
-    #         if (current_product.price != updated_product["price"] and (updated_product["price"] >= 0):
-    #             current_product.price = updated_product["price"]
-    #         else: print(f"Entered mandatory value for 'price' is identical or not valid!")
-    #         if current_product.is_offer != updated_product["is_offer"]:
-    #             current_product.price = updated_product["price"]        
-    #         if (current_product.tags != []) and (current_product.tags != updated_product["tags"]:
-    #             current_product.tags.clear
-    #             current_product.tags.extend(updated_product["tags"]
-    #         if (updated_product["supplier"]["name"]) is not None and updated_product["supplier"]["name"]) != "string") and (current_product.supplier.name != updated_product["supplier"]["name"])):
-    #             current_product.supplier.name = updated_product["supplier"]["name"])
-    #         else: print(f"Entered value for 'supplier name' is identical or not valid!")
-    #         if (updated_product["supplier"]["contact_email"]) is not None and updated_product["supplier"]["contact_email"]) !="string") and (current_product.supplier.contact_email != updated_product["supplier"]["contact_email"])):
-    #             current_product.supplier.contact_email = updated_product["supplier"]["contact_email"])
-    #         else: print(f"Entered value for 'supplier e-mail address' is identical or not valid!")
-    #         storage.save_products()
-    #     # return storage.products[key]
-    #     return current_product               
 
-# DOES THIS WORK???
-# See: https://realpython.com/ref/builtin-functions/setattr/
-                if field == "price":
-                    setattr(current_product, field, value)
-             and value != "string":
-                current_product.name = value
-            else: print(f"Entered mandatory value for 'name' is identical or not valid!")
-            if (current_product.price != updated_product["price"] and (updated_product["price"] >= 0):
-                current_product.price = updated_product["price"]
-            else: print(f"Entered mandatory value for 'price' is identical or not valid!")
-            if current_product.is_offer != updated_product["is_offer"]:
-                current_product.price = updated_product["price"]        
-            if (current_product.tags != []) and (current_product.tags != updated_product["tags"]:
-                current_product.tags.clear
-                current_product.tags.extend(updated_product["tags"]
-            if (updated_product["supplier"]["name"]) is not None and updated_product["supplier"]["name"]) != "string") and (current_product.supplier.name != updated_product["supplier"]["name"])):
-                current_product.supplier.name = updated_product["supplier"]["name"])
-            else: print(f"Entered value for 'supplier name' is identical or not valid!")
-            if (updated_product["supplier"]["contact_email"]) is not None and updated_product["supplier"]["contact_email"]) !="string") and (current_product.supplier.contact_email != updated_product["supplier"]["contact_email"])):
-                current_product.supplier.contact_email = updated_product["supplier"]["contact_email"])
-            else: print(f"Entered value for 'supplier e-mail address' is identical or not valid!")
-            storage.save_products()
-        # return storage.products[key]
-        
 
 # using a products dict
 @app.delete("/products/{id}", response_model=Product)
 def delete_product(id: int):
     if id not in storage.products:
-    # k = products.keys()
-    # if id not in k:
         raise HTTPException(status_code=404, detail="Product not found")
     deleted = storage.products.pop(id)
+    # ensure persistence
     storage.save_products()
     return deleted
     

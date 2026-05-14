@@ -19,11 +19,44 @@ current_id = 1
 
 class Tags(Enum):
     FRUIT = 'fruit'
+    VEGAN = 'vegan'
+    BAKERY = 'bakery'
+    WHOLEGRAIN = 'wholegrain'
+    EGGS = 'eggs'
+    ORGANIC = 'organic'
+    DAIRY = 'dairy'
+    CHEESE = 'cheese'
+    VEGETABLE = 'vegetable'
+    PANTRY = 'pantry'
+    OIL = 'oil'
+    PASTA = 'pasta'
+    BEVERAGE = 'beverage'
+    JUICE = 'juice'
+    YOGURT = 'yogurt'
+    SPREAD = 'spread'
+    NUT = 'nut'
+    LEGUMES = 'legumes'
+    MEAT = 'meat'
     FRESH = 'fresh'
+    COFFEE = 'coffee'
+    BREAKFAST = 'breakfast'
+    FISH = 'fish'
+    TEA = 'tea'
     SNACK = 'snack'
     SWEET = 'sweet'
-    DAIRY = 'dairy'
-    VEGAN = 'vegan'
+    HERB = 'herb'
+    STARCH = 'starch'
+    CITRUS = 'citrus'
+    PROTEIN = 'protein'
+    SWEETENER = 'sweetener'
+    SALAD = 'salad'
+    GRAIN = 'grain'
+    TROPICAL = 'tropical'
+    FROZEN = 'frozen'
+    SEASONAL = 'seasonal'
+    CONDIMENT = 'condiment'
+    WATER = 'water'
+    CAPSICUM = 'capsicum'
     MISC = 'misc'
 
 class Supplier(BaseModel):
@@ -34,7 +67,7 @@ class Supplier(BaseModel):
 # Fields enable validation inside Pydantic models, see also https://fastapi.tiangolo.com/tutorial/body-fields/?h=field
 class Product(BaseModel):
     id: int = Field(gt=0)
-    name: str = Field(..., max_length=20)
+    name: str = Field(..., max_length=50)
     price: Decimal = Field(max_digits=5, decimal_places=2)
     is_offer: bool = False
     tags: List[Tags] = Field(default_factory=list)
@@ -46,7 +79,7 @@ class Product(BaseModel):
     # OR explicitly uses Field(...)
 class ProductCreate(BaseModel):
     # model_config = ConfigDict(strict=True)    
-    name: str = Field(..., max_length=20)
+    name: str = Field(..., max_length=50)
     price: Decimal = Field(max_digits=5, decimal_places=2)
     is_offer: bool = False
     # default for tags = empty list
@@ -55,7 +88,7 @@ class ProductCreate(BaseModel):
 
 
 class ProductPatch(BaseModel):
-    name: str | None = Field(max_length=20, default=None) 
+    name: str | None = Field(max_length=50, default=None) 
     price: Decimal | None = Field(max_digits=5, decimal_places=2, default=None) 
     is_offer: bool | None  = Field(default=None)
     tags: List[Tags] | None = Field(default=None)
@@ -63,7 +96,7 @@ class ProductPatch(BaseModel):
 
 # class ProductUpdate(BaseModel):
 #     # model_config = ConfigDict(strict=True)    
-#     name: str = Field(..., max_length=20)
+#     name: str = Field(..., max_length=50)
 #     price: Decimal = Field(max_digits=5, decimal_places=2)
 #     is_offer: bool = False
 #     tags: List[Tags] = Field(default_factory=list)
